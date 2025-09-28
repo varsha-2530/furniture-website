@@ -21,7 +21,7 @@ const Brands = () => {
               key={idx}
               src={logo}
               alt={`brand-${idx}`}
-              className="mx-auto h-12 sm:h-14 object-contain grayscale hover:grayscale-0 transition duration-300 ease-in-out"
+              className="mx-auto h-12 sm:h-14 object-contain sm:grayscale sm:hover:grayscale-0 transition duration-300 ease-in-out"
             />
           ))}
         </div>
@@ -31,3 +31,4 @@ const Brands = () => {
 };
 
 export default Brands;
+    
