@@ -24,20 +24,26 @@ const App = () => {
       offset: 120,
     });
 
-    // Fake loading timeout (you can replace this with actual logic later)
+    // Loader timeout (1.5 sec)
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); // 1.5 seconds
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-white">
-        <div className="relative w-14 h-14">
+      <div className="flex flex-col items-center justify-center h-screen bg-blue-50 text-center px-4 animate-fadeIn">
+        {/* Spinner */}
+        <div className="relative w-14 h-14 mb-4">
           <div className="absolute inset-0 border-4 border-[#d49a11] border-t-transparent rounded-full animate-spin"></div>
         </div>
+
+        {/* Loading Text */}
+        <h2 className="text-xl sm:text-2xl font-semibold text-[#2E3A59]">
+          Loading your experience<span className="animate-pulse">...</span>
+        </h2>
       </div>
     );
   }
