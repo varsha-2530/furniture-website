@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Your components
+// Components
 import Brands from "./components/Brands";
 import Categories from "./components/Categories";
 import Collection from "./components/Collection";
@@ -13,14 +13,34 @@ import Offers from "./components/Offers";
 import PromoBanner from "./components/PromoBanner";
 import Services from "./components/Services";
 
-const Home = () => {
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    // Init AOS
     AOS.init({
-      duration: 1000, // animation duration
-      once: true, // animation only once
-      offset: 120, // offset (in px) from the original trigger point
+      duration: 1000,
+      once: true,
+      offset: 120,
     });
+
+    // Fake loading timeout (you can replace this with actual logic later)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); // 1.5 seconds
+
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-white">
+        <div className="relative w-14 h-14">
+          <div className="absolute inset-0 border-4 border-[#d49a11] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white">
@@ -61,4 +81,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default App;
